@@ -1,18 +1,20 @@
 import React from 'react'
 import Input from './Input.js'
-import Styles from './SpeedReader.module.css'
+import Header from './Header.js'
 
 class SpeedReader extends React.Component {
     constructor (props) {
         super(props)
 
-        /*
-        this.state = {
-            things here
-        }
-        */
         this.inputText = ''
+        this.darkMode = false;
         this.setInput = this.setInput.bind(this)
+        this.toggleDarkMode = this.toggleDarkMode.bind(this)
+    }
+
+    toggleDarkMode() {
+        this.darkMode = !this.darkMode
+        this.props.toggleDarkMode(this.darkMode)
     }
 
     setInput(input) {
@@ -21,8 +23,11 @@ class SpeedReader extends React.Component {
 
     render() {
         return (
-            <div className={Styles.main}>
-                <Input setInput={this.setInput} />
+            <div>
+                <Header toggleDarkMode={this.toggleDarkMode}/>
+                <div className='p-3'>
+                    <Input setInput={this.setInput} />
+                </div>
             </div>
         );
     }
