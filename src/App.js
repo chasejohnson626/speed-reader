@@ -1,36 +1,25 @@
 import React from 'react'
 import SpeedReader from './Components/SpeedReader.js'
-import colors from 'tailwindcss/colors'
 
 class App extends React.Component {
   constructor (props) {
     super(props)
 
-    this.state = {
-        darkModeClass: 'App'
-    }
-
+    this.darkMode = false
+    this.toggleDarkMode(this.darkMode)
     this.toggleDarkMode = this.toggleDarkMode.bind(this)
   }
 
   toggleDarkMode(darkMode) {
-    let darkModeClassStr = 'App'
-    if (darkMode) {
-      darkModeClassStr = 'App dark'
-      document.body.style = `background: ${colors.gray[900]}`
-    } else {
-      document.body.style = `background: ${colors.gray[100]}`
-    }
-    this.setState({
-      darkModeClass: darkModeClassStr
-    })
+    let theme = darkMode ? 'dark' : 'light'
+    document.querySelector('html').setAttribute('data-theme', theme);
   }
 
   render() {
     return (
-      <div className={this.state.darkModeClass}>
+      <div className='App'>
         <header className="App-header">
-          <SpeedReader toggleDarkMode={this.toggleDarkMode}/>
+          <SpeedReader darkMode={this.darkMode} toggleDarkMode={this.toggleDarkMode}/>
         </header>
       </div>
     );

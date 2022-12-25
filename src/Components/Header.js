@@ -7,16 +7,18 @@ const Header = ({ toggleDarkMode }) => {
             flex
             items-center
             justify-between
-            bg-white 
-            dark:bg-gray-700 
-            drop-shadow-lg 
+            bg-base-100
+            shadow-xl
             text-lg 
             font-medium 
-            text-gray-600 
+            text-base-content
             dark:text-white
             px-5'>
             <h1>Speed Reading</h1>
-            <button onClick={toggleDarkMode} className=' bg-inherit shadow-md dark:shadow-gray-800 rounded-3xl hover:bg-black hover:bg-opacity-10'>
+            <button onClick={toggleDarkMode} className='bg-primary 
+                text-primary-content 
+                shadow-md rounded-3xl 
+                hover:bg-primary-focus'>
                 <BsMoonStarsFill className='m-3 w-6 h-6'/>
             </button>
         </div>

@@ -6,10 +6,10 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
-      colors: {
-        'primary': '#35a1db',
-      },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: ['light', 'dark'],
+  },
 }

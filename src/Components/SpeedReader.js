@@ -7,7 +7,7 @@ class SpeedReader extends React.Component {
         super(props)
 
         this.inputText = ''
-        this.darkMode = false;
+        this.darkMode = props.darkMode;
         this.setInput = this.setInput.bind(this)
         this.toggleDarkMode = this.toggleDarkMode.bind(this)
     }

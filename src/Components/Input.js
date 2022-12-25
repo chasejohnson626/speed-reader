@@ -6,22 +6,21 @@ class Input extends React.Component {
             <div className='flex 
                 gap-3
                 items-center
-                bg-white 
+                bg-base-100
                 drop-shadow-lg 
                 flex-col 
                 p-3 
-                dark:bg-gray-700 
-                rounded-lg 
-                dark:text-white'>
-                <h2 className='text-lg font-medium text-gray-600 dark:text-white'>Speed Read Content</h2>
+                rounded-lg'>
+                <h2 className='text-lg font-medium text-base-content'>Speed Read Content</h2>
                 <textarea className='dark:bg-gray-800 
-                    bg-gray-100
+                    bg-base-200
                     w-full
                     resize-none min-h-[400px] 
                     rounded-lg p-1 
                     focus:outline-primary 
                     focus:outline-offset-0
-                    focus:outline-none'
+                    focus:outline-none
+                    focus:outline-4'
                     placeholder='Enter content here...'/>
             </div>
         );
