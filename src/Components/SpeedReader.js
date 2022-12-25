@@ -19,6 +19,7 @@ class SpeedReader extends React.Component {
 
     setInput(input) {
         this.inputText = input
+        console.log(this.inputText)
     }
 
     render() {
