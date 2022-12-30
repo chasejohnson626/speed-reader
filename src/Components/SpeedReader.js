@@ -24,11 +24,9 @@ class SpeedReader extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='h-[100vh] flex flex-col'>
                 <Header toggleDarkMode={this.toggleDarkMode}/>
-                <div className='p-3'>
-                    <Input setInput={this.setInput} />
-                </div>
+                <Input setInput={this.setInput} />
             </div>
         );
     }
