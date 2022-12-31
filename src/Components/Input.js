@@ -4,19 +4,35 @@ class Input extends React.Component {
     constructor (props) {
         super(props)
 
+        this.getText()
+
         this.state = {
-            content: '',
-            disabled: 'disabled'
+            content: props.inputText,
+            disabled: ''
         }
     }
 
+    getText(){
+        fetch('./defaultInput.txt')
+        .then((r) => r.text())
+        .then((text) => {
+            this.setState({
+                content: text
+            })
+        });
+    }
+
     handleContentChange = event => {
+        this.setContent(event.target.value)
+    }
+
+    setContent = content => {
         let disabledStr = 'disabled'
-        if (event.target.value.length > 0) {
+        if (content.length > 0) {
             disabledStr = ''
         }
         this.setState({
-            content: event.target.value,
+            content: content,
             disabled: disabledStr
         })
     }
@@ -48,7 +64,13 @@ class Input extends React.Component {
                     focus:outline-4
                     flex-grow'
                     placeholder='Enter content here...' />
-                <button disabled={this.state.disabled} type='button' onClick={() => this.props.setInput(this.state.content)} className="btn btn-outline btn-secondary">Let's Go</button>
+                <div className='w-full flex gap-3 justify-center'>
+                    <div className='basis-0 flex-grow'></div>
+                    <button disabled={this.state.disabled} type='button' onClick={() => this.props.setInput(this.state.content)} className="btn btn-outline btn-success ml-auto">Let's Go</button>
+                    <div className='basis-0 flex-grow'>
+                        <button type='button' onClick={() => this.setContent('')} className="btn btn-outline btn-info float-right">Clear</button>
+                    </div>
+                </div>
             </div>
         );
     }

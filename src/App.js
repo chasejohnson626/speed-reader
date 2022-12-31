@@ -5,7 +5,7 @@ class App extends React.Component {
   constructor (props) {
     super(props)
 
-    this.darkMode = false
+    this.darkMode = true
     this.toggleDarkMode(this.darkMode)
     this.toggleDarkMode = this.toggleDarkMode.bind(this)
   }
