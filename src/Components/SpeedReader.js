@@ -14,15 +14,33 @@ class SpeedReader extends React.Component {
         this.setWPM = this.setWPM.bind(this);
         this.setNumWordsDisp = this.setNumWordsDisp.bind(this);
         this.stopPlayback = this.stopPlayback.bind(this);
+        this.setTextSize = this.setTextSize.bind(this)
+        this.reset = this.reset.bind(this)
 
         this.display = React.createRef();
+        this.settings = React.createRef();
+
+        this.initialState = {
+            wpm: 300,
+            numWordsDisp: 1,
+            textSize: 8
+        };
 
         this.state = {
             inputSet: false,
             inputText: '',
-            wpm: 300,
-            numWordsDisp: 1
+            ...this.initialState
         };
+    }
+
+    reset() {
+        this.stopPlayback();
+        this.setState({
+            ...this.initialState
+        });
+        this.settings.current.setState({
+            ...this.initialState
+        })
     }
 
     setWPM(wpm) {
@@ -36,6 +54,12 @@ class SpeedReader extends React.Component {
         this.stopPlayback();
         this.setState({
             numWordsDisp: numWordsDisp
+        });
+    }
+
+    setTextSize(textSize) {
+        this.setState({
+            textSize: textSize
         });
     }
 
@@ -69,8 +93,8 @@ class SpeedReader extends React.Component {
                     this.state.inputSet 
                         ? 
                         <div className='h-full w-full mx-auto max-w-6xl flex flex-wrap gap-3 py-3 justify-center'>
-                            <Display inputText={this.state.inputText} wpm={this.state.wpm} numWordsDisp={this.state.numWordsDisp} ref={this.display} />
-                            <Settings wpm={this.state.wpm} numWordsDisp={this.state.numWordsDisp} setWPM={this.setWPM} setNumWordsDisp={this.setNumWordsDisp}/>
+                            <Display inputText={this.state.inputText} wpm={this.state.wpm} numWordsDisp={this.state.numWordsDisp} ref={this.display} textSize={this.state.textSize} />
+                            <Settings wpm={this.state.wpm} numWordsDisp={this.state.numWordsDisp} setWPM={this.setWPM} setNumWordsDisp={this.setNumWordsDisp} setTextSize={this.setTextSize} textSize={this.state.textSize} reset={this.reset} ref={this.settings} />
                         </div> 
                         : 
                         <Input inputText={this.state.inputText} setInput={this.setInput} />

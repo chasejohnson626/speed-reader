@@ -16,6 +16,7 @@ class Display extends React.Component {
             wordIndex: 0,
             word: null,
             play: false,
+            textSizes: ['text-xs', 'text-sm', 'text-md', 'text-lg', 'text-xl', 'text-2xl', 'text-3xl', 'text-4xl', 'text-5xl', 'text-6xl', 'text-7xl', 'text-8xl', 'text-9xl']
         }
     }
 
@@ -70,7 +71,7 @@ class Display extends React.Component {
     render() {
         return(
             <div className='bg-base-100 rounded-lg p-3 min-h-[60%] max-w-4xl w-full flex flex-col justify-center items-center'>
-                <div className='text-5xl my-auto text-center'>
+                <div className={'my-auto text-center ' + this.state.textSizes[this.props.textSize]}>
                     {this.state.words.slice(this.state.wordIndex, this.state.wordIndex + this.props.numWordsDisp).join(' ')}
                 </div>
                 <div className='justify-end w-full flex items-center'>
