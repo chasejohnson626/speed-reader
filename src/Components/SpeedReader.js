@@ -16,6 +16,7 @@ class SpeedReader extends React.Component {
         this.stopPlayback = this.stopPlayback.bind(this);
         this.setTextSize = this.setTextSize.bind(this)
         this.reset = this.reset.bind(this)
+        this.setVariableSpeed = this.setVariableSpeed.bind(this)
 
         this.display = React.createRef();
         this.settings = React.createRef();
@@ -23,7 +24,8 @@ class SpeedReader extends React.Component {
         this.initialState = {
             wpm: 300,
             numWordsDisp: 1,
-            textSize: 8
+            textSize: 8,
+            variableSpeed: false
         };
 
         this.state = {
@@ -57,6 +59,13 @@ class SpeedReader extends React.Component {
         });
     }
 
+    setVariableSpeed(variableSpeed) {
+        this.stopPlayback();
+        this.setState({
+            variableSpeed: variableSpeed
+        });
+    }
+
     setTextSize(textSize) {
         this.setState({
             textSize: textSize
@@ -78,9 +87,9 @@ class SpeedReader extends React.Component {
         this.props.toggleDarkMode(this.darkMode);
     }
 
-    setInput(input) {
+    setInput(input, dispOn) {
         this.setState({
-            inputSet: true,
+            inputSet: dispOn,
             inputText: input
         });
     }
@@ -88,15 +97,15 @@ class SpeedReader extends React.Component {
     render() {
         return (
             <div className='h-[100vh] flex flex-col'>
-                <Header toggleDarkMode={this.toggleDarkMode}/>
-                { 
-                    this.state.inputSet 
-                        ? 
+                <Header toggleDarkMode={this.toggleDarkMode} />
+                {
+                    this.state.inputSet
+                        ?
                         <div className='h-full w-full mx-auto max-w-6xl flex flex-wrap gap-3 py-3 justify-center'>
-                            <Display inputText={this.state.inputText} wpm={this.state.wpm} numWordsDisp={this.state.numWordsDisp} ref={this.display} textSize={this.state.textSize} />
-                            <Settings wpm={this.state.wpm} numWordsDisp={this.state.numWordsDisp} setWPM={this.setWPM} setNumWordsDisp={this.setNumWordsDisp} setTextSize={this.setTextSize} textSize={this.state.textSize} reset={this.reset} ref={this.settings} />
-                        </div> 
-                        : 
+                            <Display inputText={this.state.inputText} wpm={this.state.wpm} numWordsDisp={this.state.numWordsDisp} ref={this.display} textSize={this.state.textSize} variableSpeed={this.state.variableSpeed} />
+                            <Settings wpm={this.state.wpm} numWordsDisp={this.state.numWordsDisp} setWPM={this.setWPM} setNumWordsDisp={this.setNumWordsDisp} setTextSize={this.setTextSize} textSize={this.state.textSize} reset={this.reset} ref={this.settings} setInput={this.setInput} variableSpeed={this.state.variableSpeed} setVariableSpeed={this.setVariableSpeed} />
+                        </div>
+                        :
                         <Input inputText={this.state.inputText} setInput={this.setInput} />
                 }
             </div>

@@ -66,7 +66,7 @@ class Input extends React.Component {
                     placeholder='Enter content here...' />
                 <div className='w-full flex gap-3 justify-center'>
                     <div className='basis-0 flex-grow'></div>
-                    <button disabled={this.state.disabled} type='button' onClick={() => this.props.setInput(this.state.content)} className="btn btn-outline btn-success ml-auto">Let's Go</button>
+                    <button disabled={this.state.disabled} type='button' onClick={() => this.props.setInput(this.state.content, true)} className="btn btn-outline btn-success ml-auto">Let's Go</button>
                     <div className='basis-0 flex-grow'>
                         <button type='button' onClick={() => this.setContent('')} className="btn btn-outline btn-info float-right">Clear</button>
                     </div>

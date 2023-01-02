@@ -1,4 +1,5 @@
 import React from 'react'
+import { BsInfoCircle } from 'react-icons/bs';
 
 class Settings extends React.Component {
     constructor(props) {
@@ -7,11 +8,13 @@ class Settings extends React.Component {
         this.setWPM = this.setWPM.bind(this)
         this.setNumWordsDisp = this.setNumWordsDisp.bind(this)
         this.setTextSize = this.setTextSize.bind(this)
+        this.setVariableSpeed = this.setVariableSpeed.bind(this)
 
         this.state = {
             wpm: props.wpm,
             numWordsDisp: props.numWordsDisp,
-            textSize: props.textSize
+            textSize: props.textSize,
+            variableSpeed: props.variableSpeed
         }
     }
 
@@ -36,8 +39,15 @@ class Settings extends React.Component {
         this.props.setTextSize(parseInt(textSize.target.value))
     }
 
+    setVariableSpeed(variableSpeed) {
+        this.setState({
+            variableSpeed: variableSpeed.target.checked
+        });
+        this.props.setVariableSpeed(variableSpeed.target.checked)
+    }
+
     render() {
-        return(
+        return (
             <div className='bg-base-100 rounded-lg p-3 flex-grow flex flex-col'>
                 <div className='gap-3 grid grid-cols-[repeat(auto-fit,minmax(10rem,1fr))]'>
                     <div className='form-control gap-3 border-2 p-3 rounded-lg border-base-300'>
@@ -58,11 +68,20 @@ class Settings extends React.Component {
                         <div className='mx-2'>Text Size</div>
                         <input type="range" min="0" max="12" value={this.state.textSize} onChange={this.setTextSize} className="range range-primary" />
                     </div>
+                    <div className="form-control border-2 rounded-lg border-base-300">
+                        <div className="cursor-pointer flex px-0 py-3 justify-evenly items-center w-full h-full">
+                            <span className="label-text text-center">Variable Speed</span>
+                            <input type="checkbox" className="toggle toggle-primary" onClick={this.setVariableSpeed} />
+                            <div className="tooltip tooltip-left" data-tip="Maintain same WPM average but slow down on longer words and speed up on shorter words">
+                                <BsInfoCircle className=' mx-auto' />
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className='flex-grow flex flex-col py-3'>
                     <div className=' mt-auto flex justify-center items-center gap-3 flex-wrap'>
                         <button onClick={this.props.reset} className="btn btn-outline btn-info">Reset</button>
-                        <button className="btn btn-outline btn-info">New Entry</button>
+                        <button onClick={() => this.props.setInput('', false)} className="btn btn-outline btn-info">New Entry</button>
                     </div>
                 </div>
             </div>
