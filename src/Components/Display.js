@@ -65,7 +65,9 @@ class Display extends React.Component {
         if (this.props.variableSpeed) {
             let totalDispLetters = 0;
             for (let i = nextWordIndex; i < nextWordIndex + this.props.numWordsDisp; i++) {
-                totalDispLetters += this.state.words[i].length;
+                if (this.state.words[i]) {
+                    totalDispLetters += this.state.words[i].length;
+                }
             }
             return parseFloat(totalDispLetters) / parseFloat(this.averageLetters * this.props.numWordsDisp)
         } else {
