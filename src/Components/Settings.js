@@ -71,7 +71,7 @@ class Settings extends React.Component {
                     <div className="form-control border-2 rounded-lg border-base-300">
                         <div className="cursor-pointer flex px-0 py-3 justify-evenly items-center w-full h-full">
                             <span className="label-text text-center">Variable Speed</span>
-                            <input type="checkbox" className="toggle toggle-primary" onClick={this.setVariableSpeed} />
+                            <input type="checkbox" className="toggle toggle-primary" onClick={this.setVariableSpeed} checked={this.state.variableSpeed} />
                             <div className="tooltip tooltip-left" data-tip="Maintain same WPM average but slow down on longer words and speed up on shorter words">
                                 <BsInfoCircle className=' mx-auto' />
                             </div>
