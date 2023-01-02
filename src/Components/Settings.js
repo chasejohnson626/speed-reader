@@ -69,11 +69,11 @@ class Settings extends React.Component {
                         <input type="range" min="0" max="12" value={this.state.textSize} onChange={this.setTextSize} className="range range-primary" />
                     </div>
                     <div className="form-control border-2 rounded-lg border-base-300">
-                        <div className="cursor-pointer flex px-0 py-3 justify-evenly items-center w-full h-full">
+                        <div className="cursor-pointer flex gap-1 px-0 py-3 justify-evenly items-center w-full h-full">
                             <span className="label-text text-center">Variable Speed</span>
                             <input type="checkbox" className="toggle toggle-primary" onClick={this.setVariableSpeed} checked={this.state.variableSpeed} />
                             <div className="tooltip tooltip-left" data-tip="Maintain same WPM average but slow down on longer words and speed up on shorter words">
-                                <BsInfoCircle className=' mx-auto' />
+                                <BsInfoCircle className='mx-auto' />
                             </div>
                         </div>
                     </div>
