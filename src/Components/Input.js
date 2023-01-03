@@ -39,30 +39,9 @@ class Input extends React.Component {
 
   render() {
     return (
-      <div className='flex 
-                m-3
-                flex-grow
-                gap-3
-                items-center
-                bg-base-100
-                drop-shadow-lg 
-                flex-col 
-                p-3 
-                rounded-lg
-                w-full
-                max-w-5xl
-                mx-auto'>
+      <div className='flex m-3 flex-grow gap-3 items-center bg-base-100 drop-shadow-lg flex-col p-3 rounded-lg w-full max-w-5xl mx-auto'>
         <h2 className='text-lg font-medium text-base-content'>Speed Read Content</h2>
-        <textarea value={this.state.content} onChange={this.handleContentChange} className='dark:bg-gray-800 
-                    bg-base-200
-                    w-full
-                    resize-none
-                    rounded-lg p-1 
-                    focus:outline-primary 
-                    focus:outline-offset-0
-                    focus:outline-none
-                    focus:outline-4
-                    flex-grow'
+        <textarea value={this.state.content} onChange={this.handleContentChange} className='dark:bg-gray-800 bg-base-200 w-full resize-none rounded-lg p-1 focus:outline-primary focus:outline-offset-0 focus:outline-none focus:outline-4 flex-grow'
           placeholder='Enter content here...' />
         <div className='w-full flex gap-3 justify-center'>
           <div className='basis-0 flex-grow'></div>

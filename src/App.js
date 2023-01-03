@@ -2,7 +2,7 @@ import React from 'react'
 import SpeedReader from './Components/SpeedReader.js'
 
 class App extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
 
     this.darkMode = true
@@ -15,11 +15,15 @@ class App extends React.Component {
     document.querySelector('html').setAttribute('data-theme', theme);
   }
 
+  componentDidMount() {
+    document.title = "Speed Reader"
+  }
+
   render() {
     return (
       <div className='App'>
         <header className="App-header">
-          <SpeedReader darkMode={this.darkMode} toggleDarkMode={this.toggleDarkMode}/>
+          <SpeedReader darkMode={this.darkMode} toggleDarkMode={this.toggleDarkMode} />
         </header>
       </div>
     );
