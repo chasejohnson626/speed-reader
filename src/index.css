@@ -1,9 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-    .tooltip:before {
-        @apply !max-w-[10rem];
-    }
-}
